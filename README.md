@@ -1,6 +1,37 @@
 # TikZ Figures
 
-| 图名 | 描述 | PDF |
-|------|------|-----|
-| GRPO | Group Preference Optimization 算法流程图 | [GRPO.pdf](GRPO.pdf) |
-| GRPO with Self-Rewarded | 自奖励 GRPO | [GRPO_self_reward.pdf](GRPO_self_reward.pdf) |
+LaTeX/TikZ figures for reinforcement learning algorithms. All figures are compiled to both PDF and PNG formats.
+
+## Figures
+
+| Figure | Description | Source |
+|--------|-------------|--------|
+| GRPO | Group Preference Optimization algorithm flowchart | [GRPO.tex](GRPO.tex) |
+| GRPO with Self-Rewarded | Self-rewarded GRPO algorithm flowchart | [GRPO_self_reward.tex](GRPO_self_reward.tex) |
+
+### GRPO
+
+Group Preference Optimization algorithm flowchart
+
+![GRPO](fig/GRPO.png)
+
+### GRPO with Self-Rewarded
+
+Self-rewarded GRPO algorithm flowchart with task-specific rubrics and dashed Reference Model
+
+![GRPO with Self-Rewarded](fig/GRPO_self_reward.png)
+
+## Build
+
+To compile all figures and generate PNG files:
+
+```bash
+./compile_all.sh
+```
+
+This script will:
+
+- Compile all `.tex` files to PDF using `pdflatex`
+- Convert PDFs to high-resolution PNG files (300 DPI)
+- Save PNG files in the `fig/` directory
+- Clean up auxiliary files
