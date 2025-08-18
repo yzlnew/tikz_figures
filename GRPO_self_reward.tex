@@ -16,7 +16,8 @@
 
     % Main nodes
     \node[small] (q) at (0, 0) {$q$};
-    \node[font=\Large\bfseries] at ($(q.north) + (0,1.0)$) {GRPO};
+    \node[font=\Large\bfseries] (title) at ($(q.north) + (0,1.0)$) {GRPO};
+    \node[font=\small] (subtitle) at ($(title.south) - (0,0.2)$) {with Self-Rewarded};
     \node[policy, right=1cm of q] (policy) {Policy\\Model};
 
     % Output nodes from Policy Model
@@ -30,9 +31,23 @@
         \node[group_box, draw=none, fit=(o1)(o2)(oG)] (output_group) {};
     \end{scope}
 
+    % Output nodes with Rubrics
+    \node[small, text width=1.5cm, right=1cm of o1] (o1r) {$o_1, \{R_1^{i}\}$};
+    \node[small, text width=1.5cm, right=1cm of o2] (o2r) {$o_2, \{R_2^{i}\}$};
+    \node[small, text width=1.5cm, right=1cm of oG] (oGr) {$o_G, \{R_G^{i}\}$};
+    \node at ($(o2r)!0.5!(oGr)$) {$\cdots$};
+
+    \begin{scope}[on background layer]
+        \node[group_box, draw=none, fit=(o1r)(o2r)(oGr)] (output_rubric_group) {};
+    \end{scope}
+
+    % Label for rubrics group
+    \node[above=0.05cm of output_rubric_group, font=\small] {task-specific rubrics};
+
     % Reference and Reward Models
-    \node[model, right=1cm of o1, yshift=0.2cm] (ref) {Reference\\Model};
-    \node[model, right=1cm of o2] (reward) {Reward\\Model};
+    \node[model, right=1cm of o1r, yshift=0.2cm
+    ] (ref) {Reference\\Model};
+    \node[policy, right=1cm of o2r] (reward) {Generative\\RM};
 
     % Reward outputs
     \node[small, right=1cm of reward, yshift=0.8cm] (r1) {$r_1$};
@@ -64,8 +79,9 @@
     \draw[arrow] (policy) -- (output_group);
 
     % Arrows from output group to models
-    \draw[arrow] (output_group.east) to[out=15, in=200, looseness=1.2] (ref.west);
-    \draw[arrow] (output_group) -- (reward);
+    \draw[arrow] (output_group) -- (output_rubric_group);
+    \draw[arrow] (output_rubric_group) -- (reward);
+    \draw[arrow] (output_rubric_group.east) to[out=15, in=200, looseness=1.2] (ref.west);
 
     % Arrows from Reward Model to reward group
     \draw[arrow] (reward) -- (reward_group);
@@ -81,6 +97,7 @@
 
     % Arrow from Reference Model to Policy Model (overlapping with feedback arrow)
     \draw[arrow, looseness=0.7] (ref.north) to[out=150, in=60] (policy.north);
+    \draw[arrow, looseness=0.7] (policy.south) to[out=300, in=240] (reward.south);
 
     % KL label between the two curved arrows
     \node at ($(ref.north) + (0,0.4)$) {$KL$};
