@@ -45,7 +45,7 @@
     \node[above=0.05cm of output_rubric_group, font=\small] {task-specific rubrics};
 
     % Reference and Reward Models
-    \node[model, right=1cm of o1r, yshift=0.2cm
+    \node[model, dashed, right=1cm of o1r, yshift=0.2cm
     ] (ref) {Reference\\Model};
     \node[policy, right=1cm of o2r] (reward) {Generative\\RM};
 
@@ -81,7 +81,7 @@
     % Arrows from output group to models
     \draw[arrow] (output_group) -- (output_rubric_group);
     \draw[arrow] (output_rubric_group) -- (reward);
-    \draw[arrow] (output_rubric_group.east) to[out=15, in=200, looseness=1.2] (ref.west);
+    \draw[arrow, dashed] (output_rubric_group.east) to[out=15, in=200, looseness=1.2] (ref.west);
 
     % Arrows from Reward Model to reward group
     \draw[arrow] (reward) -- (reward_group);
@@ -96,7 +96,7 @@
     \draw[arrow, looseness=0.5] (final_group.north) to[out=150, in=60] (policy.north);
 
     % Arrow from Reference Model to Policy Model (overlapping with feedback arrow)
-    \draw[arrow, looseness=0.7] (ref.north) to[out=150, in=60] (policy.north);
+    \draw[arrow, looseness=0.7, dashed] (ref.north) to[out=150, in=60] (policy.north);
     \draw[arrow, looseness=0.7] (policy.south) to[out=300, in=240] (reward.south);
 
     % KL label between the two curved arrows
