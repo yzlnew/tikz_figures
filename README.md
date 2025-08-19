@@ -4,6 +4,8 @@ LaTeX/TikZ figures for reinforcement learning algorithms. All figures are compil
 
 ## Figures
 
+Style is adapted from https://arxiv.org/abs/2402.03300.
+
 | Figure | Description | Source |
 |--------|-------------|--------|
 | PPO | Proximal Policy Optimization algorithm flowchart | [PPO.tex](PPO.tex) |
