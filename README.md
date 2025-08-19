@@ -6,8 +6,15 @@ LaTeX/TikZ figures for reinforcement learning algorithms. All figures are compil
 
 | Figure | Description | Source |
 |--------|-------------|--------|
+| PPO | Proximal Policy Optimization algorithm flowchart | [PPO.tex](PPO.tex) |
 | GRPO | Group Preference Optimization algorithm flowchart | [GRPO.tex](GRPO.tex) |
 | GRPO with Self-Rewarded | Self-rewarded GRPO algorithm flowchart | [GRPO_self_reward.tex](GRPO_self_reward.tex) |
+
+### PPO
+
+Proximal Policy Optimization algorithm flowchart showing the complete training pipeline with policy model, reference model, reward model and value model.
+
+![PPO](fig/PPO.png)
 
 ### GRPO
 
@@ -17,7 +24,7 @@ Group Preference Optimization algorithm flowchart
 
 ### GRPO with Self-Rewarded
 
-Self-rewarded GRPO algorithm flowchart with task-specific rubrics and dashed Reference Model
+Self-rewarded GRPO algorithm flowchart with task-specific rubrics, refernce model can be safely ignored here. 
 
 ![GRPO with Self-Rewarded](fig/GRPO_self_reward.png)
 
